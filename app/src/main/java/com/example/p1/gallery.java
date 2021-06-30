@@ -1,19 +1,29 @@
 package com.example.p1;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link gallery#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class gallery extends Fragment {
+    private ArrayList<cats> catslist;
+    private RecyclerView recyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,6 +63,24 @@ public class gallery extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        recyclerView = recyclerView.findViewById(R.id.galleryRycyclerView);
+        catslist = new ArrayList<>();
+        setCatsInfo();
+        setAdapter();
+
+    }
+
+    private void setAdapter() {
+        galleryAdapter adapter = new galleryAdapter(catslist);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setCatsInfo() {
+        Drawable catImg = ResourcesCompat.getDrawable(getResources(), R.drawable.image1, null);
+        catslist.add(new cats(catImg));
     }
 
     @Override
