@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-
 public class gallery extends Fragment {
     private ArrayList<cats> catslist;
     private RecyclerView recyclerView;
@@ -23,12 +22,6 @@ public class gallery extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        recyclerView = recyclerView.findViewById(R.id.galleryRecyclerView);
-        catslist = new ArrayList<>();
-        setCatsInfo();
-        setAdapter();
-
     }
 
     private void setAdapter() {
@@ -48,6 +41,12 @@ public class gallery extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+        View v = inflater.inflate(R.layout.fragment_gallery, container, false);
+        recyclerView = v.findViewById(R.id.galleryRecyclerView);
+        catslist = new ArrayList<>();
+        setCatsInfo();
+        setAdapter();
+        return v;
+
     }
 }

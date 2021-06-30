@@ -3,4 +3,5 @@
     android:id="@+id/imageView1"
     android:layout_width="180dp"
     android:layout_height="180dp"
-    android:layout_margin="5dp" />
+    android:layout_margin="5dp"
+    tools:srcCompat="@tools:sample/backgrounds/scenic"/>
