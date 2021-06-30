@@ -10,7 +10,7 @@
 //
 //public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> {
 //
-//    //private String[] localDataSet;
+//    private String[] localDataSet;
 //
 //    public static class ViewHolder extends RecyclerView.ViewHolder{
 //        private final TextView textView;
