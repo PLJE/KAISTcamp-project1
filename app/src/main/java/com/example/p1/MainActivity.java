@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     Fragment frag_free;
     FragmentManager manager;
     FragmentTransaction ft;
+
+    ArrayList<Numbers> mList;
+    RecyclerView mRecycle = null;
+    PhoneAdapter mAdapter = null;
+    private String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,5 +66,25 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag_free).commit();
             }
         });
+
+
+        mRecycle = findViewById(R.id.phone_recycler);
+        mList = new ArrayList<>();
+
+        mAdapter  = new PhoneAdapter(mList);
+        mRecycle.setAdapter(mAdapter);
+        mRecycle.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false));
+
+        addItem("111");
+        addItem("322");
+
+        mAdapter.notifyDataSetChanged();
+
+    }
+    private void addItem(String number){
+        Numbers item = new Numbers();
+
+        item.setNumber(number);
+        mList.add(item);
     }
 }
