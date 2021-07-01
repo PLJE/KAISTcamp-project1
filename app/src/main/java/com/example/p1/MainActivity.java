@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager manager;
     FragmentTransaction ft;
 
-    ArrayList<Numbers> mList;
-    RecyclerView mRecycle = null;
-    PhoneAdapter mAdapter = null;
-    private String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,24 +63,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        mRecycle = findViewById(R.id.phone_recycler);
-        mList = new ArrayList<>();
-
-        mAdapter  = new PhoneAdapter(mList);
-        mRecycle.setAdapter(mAdapter);
-        mRecycle.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false));
-
-        addItem("111");
-        addItem("322");
-
-        mAdapter.notifyDataSetChanged();
-
     }
-    private void addItem(String number){
-        Numbers item = new Numbers();
 
-        item.setNumber(number);
-        mList.add(item);
-    }
 }

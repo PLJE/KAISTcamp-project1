@@ -11,45 +11,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> {
+public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder> {
+    private ArrayList<Numbers> userList;
 
-    private ArrayList<Numbers> ndata = null;
+    public PhoneAdapter(ArrayList<Numbers> userList){
+        this.userList = userList;
+    }
 
-    public PhoneAdapter(ArrayList<Numbers> data){
-        ndata = data;
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        private TextView phonenum;
+
+        public MyViewHolder(final View view){
+            super(view);
+            phonenum = view.findViewById(R.id.tv_phone);
+        }
     }
 
     @NonNull
     @Override
-    public PhoneAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        View view = inflater.inflate(R.layout.phone_recycler , parent, false);
-        PhoneAdapter.ViewHolder vh = new PhoneAdapter.ViewHolder(view);
-
-        return vh;
+    public PhoneAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.phone_recycler, parent,false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PhoneAdapter.ViewHolder holder, int position) {
-        Numbers item = ndata.get(position);
-
-        holder.number.setText(item.getNumber());
+    public void onBindViewHolder(@NonNull PhoneAdapter.MyViewHolder holder, int position) {
+        String number = userList.get(position).getNumber();
+        holder.phonenum.setText(number);
     }
 
     @Override
     public int getItemCount() {
-        return ndata.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        //TextView name;
-        TextView number;
-
-        ViewHolder(View item){
-            super(item);
-            number = item.findViewById(R.id.tv_phone);
-        }
+        return userList.size();
     }
 }
