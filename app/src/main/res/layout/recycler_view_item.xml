@@ -1,13 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#BF9D9D">
 
     <ImageView
         android:id="@+id/gallaryImage"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="5dp"
-        android:background="#0C0C0C"
+        android:background="#FDFCFC"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 </LinearLayout>

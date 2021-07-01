@@ -1,5 +1,6 @@
 package com.example.p1;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -16,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Random;
 
 public class gallery extends Fragment {
     private ArrayList<cats> catslist;
@@ -37,15 +38,25 @@ public class gallery extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new galleryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getActivity().getApplicationContext(), "clicked"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private ArrayList<Integer> makeRand(int high){
-        HashSet<Integer> set=new HashSet<Integer>();
-        while(set.size()<=20){
-            int k=(int)(Math.random()*10000)%high;
-            set.add(k);
+        ArrayList<Integer> randL= new ArrayList<Integer>();
+        while(randL.size()<=20){
+            Random random = new Random();
+            int k =random.nextInt(high+1);
+            if(!randL.contains(k)){
+                randL.add(k);
+            }
         }
-        return new ArrayList<Integer>(set);
+        return new ArrayList<Integer>(randL);
     }
 
     private void setCatsInfo() {
