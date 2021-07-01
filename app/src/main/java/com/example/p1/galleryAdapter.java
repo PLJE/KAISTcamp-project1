@@ -23,7 +23,7 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryAdapter.MyViewHo
 
         public MyViewHolder(final View view){
             super(view);
-            img = view.findViewById(R.id.imageView1);
+            img = view.findViewById(R.id.gallaryImage);
         }
     }
 
