@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             String line = "";
             while(cur.moveToNext()){
                 int id = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts._ID));
-                line = String.format("%4d",id);
+                //line = String.format("%4d",id);
                 String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
                 line += " " + name;
 

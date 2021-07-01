@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,15 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
         public MyViewHolder(final View view){
             super(view);
             phonenum = view.findViewById(R.id.tv_phone);
+
+            phonenum.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    position+=1;
+                    Toast.makeText(v.getContext() , position +" click" , Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
