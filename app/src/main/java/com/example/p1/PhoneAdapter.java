@@ -12,11 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder> {
-    private ArrayList<Numbers> userList;
+    //private ArrayList<Numbers> userList;
+    private ArrayList<String> numbook;
 
-    public PhoneAdapter(ArrayList<Numbers> userList){
-        this.userList = userList;
+//    public PhoneAdapter(ArrayList<Numbers> userList){
+//        this.userList = userList;
+//    }
+    public PhoneAdapter(ArrayList<String> numbook){
+        this.numbook = numbook;
     }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView phonenum;
@@ -36,12 +41,12 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PhoneAdapter.MyViewHolder holder, int position) {
-        String number = userList.get(position).getNumber();
+        String number = numbook.get(position);
         holder.phonenum.setText(number);
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return numbook.size();
     }
 }
