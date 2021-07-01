@@ -33,8 +33,9 @@ public class gallery extends Fragment {
     }
 
     private void setCatsInfo() {
-        Drawable catImg = ResourcesCompat.getDrawable(getResources(), R.drawable.image1, null);
-        catslist.add(new cats(catImg));
+        catslist.add(new cats(ResourcesCompat.getDrawable(getResources(), R.drawable.image1, null)));
+        catslist.add(new cats(ResourcesCompat.getDrawable(getResources(), R.drawable.image2, null)));
+        catslist.add(new cats(ResourcesCompat.getDrawable(getResources(), R.drawable.image3, null)));
     }
 
     @Override

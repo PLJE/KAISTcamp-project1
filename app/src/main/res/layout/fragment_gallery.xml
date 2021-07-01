@@ -12,6 +12,5 @@
         android:scrollbars="vertical"
         tools:itemCount="20"
         tools:layoutManager="GridLayoutManager"
-        tools:listitem="@layout/recycler_view_item"
-        tools:spanCount="2" />
+        tools:listitem="@layout/recycler_view_item"/>
 </FrameLayout>
