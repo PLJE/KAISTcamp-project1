@@ -15,13 +15,9 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
     //private ArrayList<Numbers> userList;
     private ArrayList<String> numbook;
 
-//    public PhoneAdapter(ArrayList<Numbers> userList){
-//        this.userList = userList;
-//    }
     public PhoneAdapter(ArrayList<String> numbook){
         this.numbook = numbook;
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView phonenum;

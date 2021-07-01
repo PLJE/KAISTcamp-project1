@@ -7,11 +7,12 @@
 
     <TextView
         android:id="@+id/tv_phone"
-        android:layout_width="160dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="phonenum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#9CB7CCB8"
+        android:text="전화번호"
+        android:textColor="#120E0E"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

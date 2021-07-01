@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts._ID));
                 line = String.format("%4d",id);
                 String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                line += "/" + name;
+                line += " " + name;
 
                 if(("1").equals(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)))) {
                     Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", new String[]{String.valueOf(id)}, null);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                     while (pCur.moveToNext()) {
                         phoneNum[i] = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        line += " / " + phoneNum[i];
+                        line += " " + phoneNum[i];
                         phoneType[i] = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
                         i++;
                     }

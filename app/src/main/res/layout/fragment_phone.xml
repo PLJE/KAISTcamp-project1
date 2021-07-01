@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B552A155"
+    android:background="#57A6C5A7"
     tools:context=".phone">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/phone_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8F74BC77" />
+        android:background="#4697BF99" />
 </FrameLayout>

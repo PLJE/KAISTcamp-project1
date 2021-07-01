@@ -38,13 +38,6 @@ public class phone extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-//    private void setUserInfo() {
-//        userList.add(new Numbers("010-5526-6572"));
-//        userList.add(new Numbers("010-3570-9620"));
-//        userList.add(new Numbers("010-3570-6970"));
-//        userList.add(new Numbers("010-6434-1889"));
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
