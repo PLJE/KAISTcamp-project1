@@ -66,8 +66,6 @@ public class free extends Fragment {
         }
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,10 +104,21 @@ public class free extends Fragment {
 
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 inputString = message.getText().toString().replace(" ","");
-                flashMessage();
 
+                //
+                String flashString = "";
+                for(String i : inputString.split("")){
+                    flashString+=morseConverter.get(i.toUpperCase());
+                }
+                flashString =flashString.replace("0",".");
+                flashString =flashString.replace("1","-");
+                TextView morse = (TextView)v.findViewById(R.id.tv_morse);
+                morse.setText(flashString);
+                //
+
+                flashMessage();
             }
 
             private void flashMessage() {
@@ -117,6 +126,7 @@ public class free extends Fragment {
                 for(String i : inputString.split("")){
                     flashString+=morseConverter.get(i.toUpperCase());
                 }
+
                 for(String i : flashString.split("")){
                     if(i.equals("0")){
                         shortFlash();
@@ -125,7 +135,6 @@ public class free extends Fragment {
                         longFlash();
                     }
                 }
-
             }
 
             private void longFlash() {

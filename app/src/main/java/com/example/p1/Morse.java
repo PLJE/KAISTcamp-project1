@@ -44,6 +44,13 @@ public class Morse {
         maps.put("7","11000");
         maps.put("8","11100");
         maps.put("9","11110");
+        maps.put(".", "010101");
+        maps.put(",", "110011");
+        maps.put("?", "0.1100");
+        maps.put("!", "101011");
+        maps.put("-", "100001");
+        maps.put("/", "10010");
+        maps.put("@", "011010");
     }
     public HashMap<String,String> getMaps(){
         return maps;
