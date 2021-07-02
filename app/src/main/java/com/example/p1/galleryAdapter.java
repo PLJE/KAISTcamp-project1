@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 public class galleryAdapter extends RecyclerView.Adapter<galleryAdapter.MyViewHolder> {
     private ArrayList<cats> catslist;
     private OnItemClickListener mListener;
+    private Animation fade_in;
+
+
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

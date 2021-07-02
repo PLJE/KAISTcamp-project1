@@ -13,19 +13,34 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
+
+
 public class gallery extends Fragment {
     private ArrayList<cats> catslist;
+    private ArrayList<Integer> IDlist = new ArrayList<>();
     private RecyclerView recyclerView;
+    private Animation fade_in;
+
+    private View xButton;
+    private View animatedView;
+    private ViewPager viewPager;
+    private slideAdapter myadapter;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +57,10 @@ public class gallery extends Fragment {
         adapter.setOnItemClickListener(new galleryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getActivity().getApplicationContext(), "clicked"+position, Toast.LENGTH_SHORT).show();
+                ((ViewPager) animatedView).setCurrentItem(position, false);
+                animatedView.startAnimation(fade_in);
+                xButton.setVisibility(View.VISIBLE);
+                animatedView.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -60,13 +78,14 @@ public class gallery extends Fragment {
     }
 
     private void setCatsInfo() {
-        int catImgN=23;
         String fileN="image";
-        ArrayList<Integer> randList = makeRand(catImgN);
+        gloval k = new gloval();
+        ArrayList<Integer> randList = makeRand(k.catImgN);
         ArrayList<Drawable> imgList=new ArrayList<Drawable>();
         int id=0;
         for(int i=0; i<20; i++){
             id=getResources().getIdentifier(fileN+randList.get(i), "drawable", getActivity().getPackageName());
+            IDlist.add(id);
             if(id!=0){
                 imgList.add(getContext().getDrawable(id));
             }
@@ -79,15 +98,42 @@ public class gallery extends Fragment {
         }
     }
 
+    public static int[] convertIntegers(ArrayList<Integer> integers)
+    {
+        int[] ret = new int[integers.size()];
+        for (int i=0; i < ret.length; i++)
+        {
+            ret[i] = integers.get(i).intValue();
+        }
+        return ret;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gallery, container, false);
         recyclerView = v.findViewById(R.id.galleryRecyclerView);
+        animatedView = v.findViewById(R.id.viewpager);
+        xButton = v.findViewById(R.id.xButton);
         catslist = new ArrayList<>();
+        fade_in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+        viewPager = (ViewPager) animatedView;
+        myadapter = new slideAdapter(getContext());
+
         setCatsInfo();
         setAdapter();
+
+        myadapter.setLst_images(convertIntegers(IDlist));
+        viewPager.setAdapter(myadapter);
+
+        xButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xButton.setVisibility(View.GONE);
+                animatedView.setVisibility(View.GONE);
+            }
+        });
         return v;
 
     }
