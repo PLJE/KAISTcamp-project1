@@ -2,7 +2,7 @@ package com.example.p1;
 
 import android.graphics.drawable.Drawable;
 
-public class cats {
+public class cats {  //gallayAdapter를 위한 cats class
     private Drawable cats;
 
     public cats(Drawable cats) {
@@ -16,6 +16,5 @@ public class cats {
     public Drawable getCats() {
         return cats;
     }
-
 
 }

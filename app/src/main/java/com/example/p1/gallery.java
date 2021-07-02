@@ -35,6 +35,7 @@ public class gallery extends Fragment {
     private RecyclerView recyclerView;
     private Animation fade_in;
 
+    private View blackBoard;
     private View xButton;
     private View animatedView;
     private ViewPager viewPager;
@@ -58,6 +59,7 @@ public class gallery extends Fragment {
             @Override
             public void onItemClick(int position) {
                 ((ViewPager) animatedView).setCurrentItem(position, false);
+                blackBoard.setVisibility(View.VISIBLE);
                 animatedView.startAnimation(fade_in);
                 xButton.setVisibility(View.VISIBLE);
                 animatedView.setVisibility(View.VISIBLE);
@@ -116,6 +118,7 @@ public class gallery extends Fragment {
         recyclerView = v.findViewById(R.id.galleryRecyclerView);
         animatedView = v.findViewById(R.id.viewpager);
         xButton = v.findViewById(R.id.xButton);
+        blackBoard = v.findViewById(R.id.blackBorad);
         catslist = new ArrayList<>();
         fade_in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
         viewPager = (ViewPager) animatedView;
@@ -132,6 +135,7 @@ public class gallery extends Fragment {
             public void onClick(View v) {
                 xButton.setVisibility(View.GONE);
                 animatedView.setVisibility(View.GONE);
+                blackBoard.setVisibility(View.GONE);
             }
         });
         return v;
