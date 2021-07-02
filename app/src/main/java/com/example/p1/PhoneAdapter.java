@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,26 +14,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder> {
-    //private ArrayList<Numbers> userList;
-    private ArrayList<String> numbook;
 
-    public PhoneAdapter(ArrayList<String> numbook){
+    private ArrayList<String> numbook;
+    private ArrayList<String> namebook;
+
+    public PhoneAdapter(ArrayList<String> numbook ,ArrayList<String> namebook){ //
+        this.namebook = namebook; //
         this.numbook = numbook;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView phonenum;
+        private TextView name;
+        private ImageButton call;
 
         public MyViewHolder(final View view){
             super(view);
             phonenum = view.findViewById(R.id.tv_phone);
+            name = view.findViewById(R.id.tv_name);
+            call = view.findViewById(R.id.ib_call);
 
-            phonenum.setOnClickListener(new View.OnClickListener(){
+            call.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    position+=1;
-                    Toast.makeText(v.getContext() , position +" click" , Toast.LENGTH_SHORT).show();
+                    String callnum = numbook.get(position);
+                    Toast.makeText(v.getContext() , "number" + callnum , Toast.LENGTH_SHORT).show();
+
+
                 }
             });
         }
@@ -49,6 +58,9 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull PhoneAdapter.MyViewHolder holder, int position) {
         String number = numbook.get(position);
         holder.phonenum.setText(number);
+
+        String name = namebook.get(position); //
+        holder.name.setText(name); //
     }
 
     @Override

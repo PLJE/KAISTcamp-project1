@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +24,10 @@ public class phone extends Fragment {
     //private ArrayList<Numbers> userList;
     private RecyclerView recyclerView;
     private ArrayList<String> numbook;
+    private ArrayList<String> namebook; //
 
-    public phone(ArrayList<String> numbook){
+    public phone(ArrayList<String> numbook , ArrayList<String> namebook){
+        this.namebook = namebook; //
         this.numbook = numbook;
     }
 
@@ -34,7 +37,7 @@ public class phone extends Fragment {
     }
 
     private void setAdapter() {
-        PhoneAdapter adapter = new PhoneAdapter(numbook);
+        PhoneAdapter adapter = new PhoneAdapter(numbook , namebook); //
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

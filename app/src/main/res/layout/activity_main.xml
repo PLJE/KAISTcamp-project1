@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#BFBDBD"
         android:orientation="horizontal">
 
         <Button
@@ -21,7 +20,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#D73C464E"
             android:background="@drawable/button_round"
             android:text="phone"
             app:layout_constraintEnd_toStartOf="@+id/bt_gallery"
@@ -36,7 +34,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/button_round"
-            android:backgroundTint="#D73C464E"
             android:text="gallery"
             app:layout_constraintEnd_toStartOf="@+id/bt_free"
             app:layout_constraintStart_toEndOf="@+id/bt_phone"
@@ -50,7 +47,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/button_round"
-            android:backgroundTint="#D73C464E"
             android:text="free"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_gallery"
