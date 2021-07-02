@@ -1,6 +1,8 @@
 package com.example.p1;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +41,12 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     String callnum = numbook.get(position);
-                    Toast.makeText(v.getContext() , "number" + callnum , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext() , "클릭한 번호로 전화를 겁니다" , Toast.LENGTH_SHORT).show();
 
-
+                    String calling = callnum.replace("-","");
+                    Intent intent = new Intent(Intent.ACTION_DIAL , Uri.parse("tel:" + calling));
+                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                    v.getContext().startActivity(intent);
                 }
             });
         }
