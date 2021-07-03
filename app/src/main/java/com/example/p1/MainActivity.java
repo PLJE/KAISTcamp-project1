@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragment(frag_free);
 
         viewPager.setAdapter(pagerAdapter);
+
+        viewPager.setUserInputEnabled(false);
     }
     private void settingTabLayout(){
         tabLayout = (TabLayout)findViewById(R.id.tablayout_control);
