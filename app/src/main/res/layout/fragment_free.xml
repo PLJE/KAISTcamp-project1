@@ -26,7 +26,9 @@
             android:hint="English message only"
             android:inputType="text"
             android:maxLength="40"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:windowSoftInputMode ="adjustResize"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
