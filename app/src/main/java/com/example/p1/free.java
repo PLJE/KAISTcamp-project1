@@ -1,6 +1,5 @@
 package com.example.p1;
 
-
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -9,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -26,7 +26,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.HashMap;
 
 import static android.content.Context.CAMERA_SERVICE;
-
 
 public class free extends Fragment {
     private String inputString;
@@ -69,7 +68,6 @@ public class free extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -105,9 +103,7 @@ public class free extends Fragment {
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bt_submit.setEnabled(false);
                 inputString = message.getText().toString().replace(" ","");
-
 
                 String flashString = "";
                 for(String i : inputString.split("")){
@@ -118,7 +114,6 @@ public class free extends Fragment {
                 TextView morse = (TextView)v.findViewById(R.id.tv_morse);
                 morse.setText(flashString);
                 flashMessage();
-                bt_submit.setEnabled(true);
             }
 
             private void flashMessage() {

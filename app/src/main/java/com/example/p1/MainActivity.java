@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createFragment() {
         frag_phone = new phone(numbook,namebook);
+
         frag_gallery = new gallery();
         frag_free = new free();
     }
