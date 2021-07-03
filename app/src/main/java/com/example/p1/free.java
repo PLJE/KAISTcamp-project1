@@ -100,7 +100,7 @@ public class free extends Fragment {
                 mCameraId = null;
                 e.printStackTrace();
             }
-        }//카메라 세팅
+        }
 
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
