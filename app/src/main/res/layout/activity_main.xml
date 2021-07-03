@@ -19,20 +19,19 @@
             android:id="@+id/phone_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="phone"
-            ></com.google.android.material.tabs.TabItem>
+            android:text="phone" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/gallery_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="gallery"></com.google.android.material.tabs.TabItem>
+            android:text="gallery" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/morse_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="morse"></com.google.android.material.tabs.TabItem>
+            android:text="morse" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -41,6 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tablayout_control"
         android:layout_width="match_parent"
-        android:layout_height="0dp"></androidx.viewpager2.widget.ViewPager2>
+        android:layout_height="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

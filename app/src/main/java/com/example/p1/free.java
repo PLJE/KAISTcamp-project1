@@ -105,9 +105,10 @@ public class free extends Fragment {
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bt_submit.setEnabled(false);
                 inputString = message.getText().toString().replace(" ","");
 
-                //
+
                 String flashString = "";
                 for(String i : inputString.split("")){
                     flashString+=morseConverter.get(i.toUpperCase());
@@ -116,9 +117,8 @@ public class free extends Fragment {
                 flashString =flashString.replace("1","-");
                 TextView morse = (TextView)v.findViewById(R.id.tv_morse);
                 morse.setText(flashString);
-                //
-
                 flashMessage();
+                bt_submit.setEnabled(true);
             }
 
             private void flashMessage() {
@@ -139,16 +139,16 @@ public class free extends Fragment {
 
             private void longFlash() {
                 flashLightOn();
-                sleep(1500);
+                sleep(700);
                 flashLightOff();
-                sleep(300);
+                sleep(250);
             }
 
             private void shortFlash() {
                 flashLightOn();
-                sleep(500);
+                sleep(200);
                 flashLightOff();
-                sleep(300);
+                sleep(250);
 
             }
         });
