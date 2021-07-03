@@ -1,12 +1,15 @@
 package com.example.p1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.ActionBar;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,58 +19,32 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Fragment frag_phone;
-    Fragment frag_gallery;
-    Fragment frag_free;
-    FragmentManager manager;
-    FragmentTransaction ft;
-
     ArrayList<String> numbook = new ArrayList<>();
     ArrayList<String> namebook = new ArrayList<>();
+
+    private ViewPager2 viewPager;
+    private PagerAdapter pagerAdapter;
+    private phone frag_phone;
+    private gallery frag_gallery;
+    private free frag_free;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        manager = getSupportFragmentManager();
-
-        Button bt_phone = findViewById(R.id.bt_phone);
-        Button bt_gallery = findViewById(R.id.bt_gallery);
-        Button bt_free = findViewById(R.id.bt_free);
-
-        frag_phone = new phone(numbook , namebook);
-        frag_gallery = new gallery();
-        frag_free = new free();
-
-        ft = manager.beginTransaction();
-        ft.add(R.id.fragment_container , frag_phone);
-        ft.addToBackStack(null);
-        ft.commit();
-
-        bt_phone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag_phone).commit();
-            }
-        });
-        bt_gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container ,frag_gallery).commit();
-            }
-        });
-        bt_free.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag_free).commit();
-            }
-        });
+        createFragment();
+        createViewpager();
+        settingTabLayout();
 
         //bring the phone numbers
         ContentResolver cr = getContentResolver();
@@ -105,4 +82,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+    private void createFragment() {
+        frag_phone = new phone(numbook,namebook);
+        frag_gallery = new gallery();
+        frag_free = new free();
+    }
+    private void createViewpager(){
+        viewPager = (ViewPager2)findViewById(R.id.viewpager_control);
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle());
+        pagerAdapter.addFragment(frag_phone);
+        pagerAdapter.addFragment(frag_gallery);
+        pagerAdapter.addFragment(frag_free);
+
+        viewPager.setAdapter(pagerAdapter);
+        //viewPager.setUserInputEnabled(false);
+    }
+    private void settingTabLayout(){
+        tabLayout = (TabLayout)findViewById(R.id.tablayout_control);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int pos = tab.getPosition();
+                switch(pos){
+                    case 0:
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case 1:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case 2:
+                        viewPager.setCurrentItem(2);
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
 }
