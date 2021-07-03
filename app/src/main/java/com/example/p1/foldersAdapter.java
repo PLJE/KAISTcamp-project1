@@ -4,18 +4,17 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class galleryAdapter extends RecyclerView.Adapter<galleryAdapter.MyViewHolder> {
-    private ArrayList<cats> catslist;
+public class foldersAdapter extends RecyclerView.Adapter<foldersAdapter.MyViewHolder> {
+    private ArrayList<folders> folderslist;
     private OnItemClickListener mListener;
-    private Animation fade_in;
 
 
     public interface OnItemClickListener {
@@ -26,15 +25,17 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryAdapter.MyViewHo
         mListener = listener;
     }
 
-    public galleryAdapter(ArrayList<cats> catslist){
-        this.catslist = catslist;
+    public foldersAdapter(ArrayList<folders> folderslist){
+        this.folderslist = folderslist;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView img;
+        private TextView text;
         public MyViewHolder(final View view, OnItemClickListener listener){
             super(view);
-            img = view.findViewById(R.id.gallaryImage);
+            img = view.findViewById(R.id.folderImage);
+            text = view.findViewById(R.id.folderText);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -55,20 +56,22 @@ public class galleryAdapter extends RecyclerView.Adapter<galleryAdapter.MyViewHo
     @NonNull
     @org.jetbrains.annotations.NotNull
     @Override
-    public galleryAdapter.MyViewHolder onCreateViewHolder(@NonNull @org.jetbrains.annotations.NotNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item, parent, false);
+    public foldersAdapter.MyViewHolder onCreateViewHolder(@NonNull @org.jetbrains.annotations.NotNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_recycler, parent, false);
         return new MyViewHolder(itemView, mListener);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull galleryAdapter.MyViewHolder holder, int position) {
-        Drawable cats = catslist.get(position).getCats();
-        holder.img.setImageDrawable(cats);
+    public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull foldersAdapter.MyViewHolder holder, int position) {
+        Drawable ThumbNail = folderslist.get(position).getThumbNail();
+        String folderName = folderslist.get(position).getFolderName();
+        holder.img.setImageDrawable(ThumbNail);
+        holder.text.setText(folderName);
     }
 
     @Override
     public int getItemCount() {
-        return catslist.size();
+        return folderslist.size();
     }
 }
