@@ -81,8 +81,8 @@ public class gallery extends Fragment {
         recyclerView = v.findViewById(R.id.galleryRecyclerView);
         foldersList= new ArrayList<>();                           //리사이클러뷰 기능 관련 함수
 
-        folderNames.add("cats");
-        folderNames.add("dogs");
+        folderNames.add("XY");
+        folderNames.add("XX");
 
         setFoldersInfo();
         setAdapter();                                           //리사이클러뷰 함수
