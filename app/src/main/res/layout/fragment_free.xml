@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:hint="English message Only"
+            android:hint="English message only"
             android:inputType="text"
             android:maxLength="40"
             android:textAlignment="center" />
@@ -45,13 +45,13 @@
         android:id="@+id/tv_morse"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="400dp"
         android:gravity="center"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_submit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

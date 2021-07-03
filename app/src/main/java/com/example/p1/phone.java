@@ -26,6 +26,9 @@ public class phone extends Fragment {
     private ArrayList<String> numbook;
     private ArrayList<String> namebook; //
 
+    public phone(){
+
+    }
     public phone(ArrayList<String> numbook , ArrayList<String> namebook){
         this.namebook = namebook; //
         this.numbook = numbook;
