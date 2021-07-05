@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +23,13 @@ import java.util.ArrayList;
 
 public class phone extends Fragment {
 
-    //private ArrayList<Numbers> userList;
     private RecyclerView recyclerView;
     private ArrayList<String> numbook;
     private ArrayList<String> namebook;
     private ArrayList<Bitmap> photobook;
+
+    PhoneAdapter adapter;
+    ItemTouchHelper helper;
 
     public phone(){
 
@@ -43,7 +46,7 @@ public class phone extends Fragment {
     }
 
     private void setAdapter() {
-        PhoneAdapter adapter = new PhoneAdapter(numbook , namebook , photobook);
+        adapter = new PhoneAdapter(numbook , namebook , photobook);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -57,6 +60,9 @@ public class phone extends Fragment {
         recyclerView = v.findViewById(R.id.phone_recycler);
 
         setAdapter();
+
+        helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
+        helper.attachToRecyclerView(recyclerView);
 
         return v;
     }
