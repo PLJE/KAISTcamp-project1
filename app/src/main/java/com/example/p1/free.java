@@ -1,5 +1,6 @@
 package com.example.p1;
 
+import android.content.Intent;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -31,6 +32,7 @@ public class free extends Fragment {
     private String inputString;
     private EditText message;
     private Button bt_submit;
+    private Button bt_decode;
     private HashMap<String,String> morseConverter;
 
     private static CameraManager mCameraManager;
@@ -77,6 +79,7 @@ public class free extends Fragment {
         View v = inflater.inflate(R.layout.fragment_free, container, false);
         message = (EditText) v.findViewById(R.id.ti_input);
         bt_submit = (Button) v.findViewById(R.id.bt_submit);
+        bt_decode = (Button) v.findViewById(R.id.bt_decode);
         Morse morse = new Morse();
         morse.setMaps();
         morseConverter = morse.getMaps();
@@ -148,6 +151,13 @@ public class free extends Fragment {
             }
         });
 
+        bt_decode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), cameraActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return v;
     }
