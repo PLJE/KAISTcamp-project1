@@ -26,6 +26,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
     private ArrayList<String> numbook;
     private ArrayList<String> namebook;
     private ArrayList<Bitmap> photobook;
+    ContentResolver cr;
 
     public PhoneAdapter(ArrayList<String> numbook , ArrayList<String> namebook , ArrayList<Bitmap> photobook){
         this.namebook = namebook;
@@ -55,6 +56,10 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
     public void onItemSwipe(int position) {
         String number = numbook.get(position);
 
+        long ID = getContactIDFromNumber(cr,number);
+        String where = ContactsContract.RawContacts.CONTACT_ID + "=" + String.valueOf(ID);
+        cr.delete(ContactsContract.RawContacts.CONTENT_URI , where, null);
+
         namebook.remove(position);
         numbook.remove(position);
         photobook.remove(position);
@@ -75,6 +80,8 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
             call = view.findViewById(R.id.ib_call);
             photo = view.findViewById(R.id.iv_photo);
 
+            cr = view.getContext().getContentResolver();
+
             call.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -86,6 +93,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
                     Intent intent = new Intent(Intent.ACTION_DIAL , Uri.parse("tel:" + calling));
                     intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
+
                 }
             });
         }
@@ -115,7 +123,6 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
     public int getItemCount() {
         return numbook.size();
     }
-
 
     public static long getContactIDFromNumber(ContentResolver contacthelper , String number){
         long rawContactId = -1;
