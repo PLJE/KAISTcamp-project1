@@ -14,12 +14,15 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import org.opencv.android.OpenCVLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> numbook = new ArrayList<>();
     ArrayList<String> namebook = new ArrayList<>();
+
+    private static String TAG = "MainActivity";
+    static {
+        if (OpenCVLoader.initDebug()){
+            Log.d(TAG, "Opencv installed successfully");
+        }
+        else{
+            Log.d(TAG, "opencv not installed");
+        }
+    }
 
     private ViewPager2 viewPager;
     private PagerAdapter pagerAdapter;
