@@ -12,10 +12,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.app.ActionBar;
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> numbook = new ArrayList<>();
     ArrayList<String> namebook = new ArrayList<>();
+    ArrayList<Bitmap> photobook = new ArrayList<>();
 
     private ViewPager2 viewPager;
     private PagerAdapter pagerAdapter;
@@ -74,18 +78,41 @@ public class MainActivity extends AppCompatActivity {
                         i++;
                     }
                 }
-                    numbook.add(line);
-                    line ="";
 
-                    namebook.add(line2);
-                    line2 = "";
-                }
+                int photoid = cur.getInt(cur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID)); //
+                Bitmap bitmap = queryContactImage(photoid);
+                photobook.add(bitmap);
+
+                numbook.add(line);
+                line ="";
+
+                namebook.add(line2);
+                line2 = "";
             }
         }
+    }
+    private Bitmap queryContactImage(int imageDataRow){
+        Cursor c = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] {
+                ContactsContract.CommonDataKinds.Photo.PHOTO
+        }, ContactsContract.Data._ID + "=?", new String[] {
+                Integer.toString(imageDataRow)
+        }, null);
+        byte[] imageBytes = null;
+        if (c != null) {
+            if (c.moveToFirst()) {
+                imageBytes = c.getBlob(0);
+            }
+            c.close();
+        }
 
+        if (imageBytes != null) {
+            return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        } else {
+            return null;
+        }
+    }
     private void createFragment() {
-        frag_phone = new phone(numbook,namebook);
-
+        frag_phone = new phone(numbook,namebook,photobook);
         frag_gallery = new gallery();
         frag_free = new free();
     }
