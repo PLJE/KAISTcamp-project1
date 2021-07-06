@@ -8,6 +8,7 @@
 ## [탭1] 휴대폰 주소록 불러오기   
 ### 화면   
 - 휴대폰 기본 주소록앱에 저장된 번호, 사진, 이름 data를 contentResolver를 이용해서 가져와 RecyclerView 형식으로 띄움
+- 사진이 없는 경우는 디폴트로 지정한 이미지
 <img src = "https://user-images.githubusercontent.com/77712822/124542052-a070bd80-de5d-11eb-961e-ac890ab981e8.jpg" width="30%" height = "30%">    
 
 ### 기능       
