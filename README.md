@@ -32,9 +32,11 @@
          
 ## [탭3] 모스 부호 변환 및 인식기   
 ### 기능   
-- 출력 : 영어로 메시지를 입력하면 모스부호를 카메라 플래시로 출력      
+- 출력 : 영어로 메시지를 입력하면 모스부호를 카메라 플래시로 출력     
+<img src = "https://user-images.githubusercontent.com/77712822/124542175-da41c400-de5d-11eb-8d02-9aa23c29d6bf.jpg" width="30%" height = "30%"> 
+
 - 디코드 : OpenCV 라이브러리를 이용해 카메라로 빛을 인식하여 모스 부호를 해독하여 메시지 띄움   
-<img src = "https://user-images.githubusercontent.com/77712822/124542175-da41c400-de5d-11eb-8d02-9aa23c29d6bf.jpg" width="30%" height = "30%">
+<img src = "https://user-images.githubusercontent.com/77712822/124558331-71fedc80-de75-11eb-982d-043cfe1e0bbc.png" width="30%" height ="30%">
 
 
 
