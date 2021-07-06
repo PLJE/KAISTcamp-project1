@@ -24,7 +24,7 @@ https://drive.google.com/file/d/1u3ICO728WT359Lc7Pm-EyFGLJAuYmz08/view?usp=shari
     
 ## [탭2] 갤러리   
 ### 화면   
-- 어플에 저장한 이미지를 두개의 CardView로 나누어서 보여주고, 하나의 카드뷰는 여러 이미지를 RecyclerView로 띄움   
+- 어플에 저장한 이미지를 두개의 CardView로 나누어서 보여주고, CardView를 클릭 시 해당하는 카테고리의 recyclerView로 넘어감
 <img src = "https://user-images.githubusercontent.com/77712822/124542132-c39b6d00-de5d-11eb-85d1-f36bdc0d5ecf.jpg" width="30%" height = "30%">
 <img src = "https://user-images.githubusercontent.com/77712822/124542153-ce560200-de5d-11eb-8d13-2546e44d6214.jpg" width="30%" height = "30%">
 
