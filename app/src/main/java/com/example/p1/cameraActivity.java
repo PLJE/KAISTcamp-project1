@@ -172,7 +172,7 @@ public class cameraActivity extends AppCompatActivity
 
         for(int i=1; i<compNum; i++){
             int area = (int) stat.get(i, CC_STAT_AREA)[0];
-            if(area<100){ continue; }
+            if(area<400){ continue; }
             int left = (int) stat.get(i, CC_STAT_LEFT)[0];
             int top = (int) stat.get(i, CC_STAT_TOP)[0];
             int width = (int) stat.get(i, CC_STAT_WIDTH)[0];
@@ -182,7 +182,7 @@ public class cameraActivity extends AppCompatActivity
             // 라벨링 박스
             Imgproc.rectangle(mRGBA, new Point(left, top), new Point(left + width, top + height), new Scalar(0, 0, 255), 3);
         }
-        if(Math.abs(tempSum-areaSum)>100) {
+        if(Math.abs(tempSum-areaSum)>400) {
             if (tempSum - areaSum > 0 && !stateNow) {  //꺼져있는 상태에서, 빛의 총량(면적이) 늘어난경우
                 stateNow = true;           // 기존보다 밝아진경우(켜진경우)
                 long tempTime=System.currentTimeMillis();
