@@ -125,7 +125,7 @@ public class cameraActivity extends AppCompatActivity
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-        mRGBA = new Mat(height, width, CvType.CV_8UC4);
+        mRGBA = new Mat(720,720,CvType.CV_8UC4);
         stat = Mat.zeros(new Size(0, 0), 0);
         centroid = Mat.zeros(new Size(0, 0), 0);
         labeled = new Mat(mRGBA.size(), mRGBA.type());
@@ -148,10 +148,10 @@ public class cameraActivity extends AppCompatActivity
         });
 
 
-
         Mat grayScaleGaussianBlur = new Mat();
         double gaussianBlurValue = 11;
-        mRGBA = inputFrame.rgba().t();
+        mRGBA=inputFrame.rgba();
+   //     Imgproc.resize(inputFrame.rgba(),mRGBA,mRGBA.size());
         int tempSum=0;
 
 
@@ -197,7 +197,8 @@ public class cameraActivity extends AppCompatActivity
             areaSum = tempSum;
         }
 
-        Core.flip(mRGBA, mRGBA, 1);
+        Core.flip(mRGBA.t(),mRGBA,1);
+        Imgproc.resize(mRGBA, mRGBA, mRGBA.t().size());
         grayScaleGaussianBlur.release();
         return mRGBA;
     }
