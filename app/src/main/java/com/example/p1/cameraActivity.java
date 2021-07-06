@@ -28,6 +28,7 @@ import org.opencv.imgproc.Imgproc;
 
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import static android.Manifest.permission.CAMERA;
@@ -47,12 +48,16 @@ public class cameraActivity extends AppCompatActivity
     private Mat mRGBA;
     private Mat labeled;
     private Mat stat, centroid;
-    private String morse = "에렐렐ㄹ레";
+    private String morse = "";
+    private String str= "";
+    private HashMap<String,String> morseMap;
     private long count= System.currentTimeMillis();
     private int areaSum=0;
     private boolean stateNow=false;   //ture라면 모스부호 켜짐, false라면 모스부호 꺼짐
 
     private TextView txt_morse;
+    private TextView txt_01;
+
 
 
     BaseLoaderCallback baseLoaderCallback = new BaseLoaderCallback(cameraActivity.this) {
@@ -73,24 +78,49 @@ public class cameraActivity extends AppCompatActivity
     };
 
 
-    private void updateMorse(long time, boolean bool){
+    private void updateMorse(long time, boolean lighton) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                txt_morse.setText(morse);
+                if (lighton) {  //꺼져있다 켜진경우
+                    if (time<1800 && time > 1400) {
+                        String text = morseMap.get(morse);
+                        if (text != null) {
+                            str += text;
+                        }
+                    morse = "";
+                    }
+                    else if (time>1800){
+                        morse = "";
+                    }
+                }
+                else{    //켜져있다 꺼진경우
+                    if(time>300 && time<700){
+                        morse+="0";
+                    }
+                    else if(time<1200 && time>700){
+                        morse+="1";
+                    }
+                }
+
             }
         });
+
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-
         javaCameraView = (JavaCameraView) findViewById(R.id.activity_surface_view);
         javaCameraView.setVisibility(SurfaceView.VISIBLE);
         javaCameraView.setCvCameraViewListener(cameraActivity.this);
+        Morse temp = new Morse();
+        temp.reverseSetMaps();
+        morseMap = temp.getMaps();
         txt_morse = (TextView) findViewById(R.id.txt_morse);
+        txt_01 = (TextView) findViewById(R.id.txt_01);
     }
 
     @Override
@@ -109,6 +139,13 @@ public class cameraActivity extends AppCompatActivity
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
     //    System.gc();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                txt_morse.setText(str);
+                txt_01.setText(morse);
+            }
+        });
 
 
 
@@ -122,17 +159,20 @@ public class cameraActivity extends AppCompatActivity
 
         Imgproc.cvtColor(mRGBA, grayScaleGaussianBlur, Imgproc.COLOR_BGR2GRAY);
         Imgproc.GaussianBlur(grayScaleGaussianBlur, grayScaleGaussianBlur, new Size(gaussianBlurValue, gaussianBlurValue), 0);
-        Imgproc.threshold(grayScaleGaussianBlur, grayScaleGaussianBlur, 200, 255, Imgproc.THRESH_BINARY);
-       // Imgproc.erode(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());
-       // Imgproc.dilate(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());  //이미지 프로세싱
+        Imgproc.threshold(grayScaleGaussianBlur, grayScaleGaussianBlur, 250, 255, Imgproc.THRESH_BINARY);
+        Imgproc.erode(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());
+        Imgproc.erode(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());
+        Imgproc.dilate(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());  //이미지 프로세싱
+        Imgproc.dilate(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());
+        Imgproc.dilate(grayScaleGaussianBlur, grayScaleGaussianBlur, new Mat());
 
 
 
         int compNum = Imgproc.connectedComponentsWithStats(grayScaleGaussianBlur, labeled, stat, centroid, 8);
 
-        for(int i=0; i<compNum; i++){
+        for(int i=1; i<compNum; i++){
             int area = (int) stat.get(i, CC_STAT_AREA)[0];
-            if(area<300){ continue; }
+            if(area<900){ continue; }
             int left = (int) stat.get(i, CC_STAT_LEFT)[0];
             int top = (int) stat.get(i, CC_STAT_TOP)[0];
             int width = (int) stat.get(i, CC_STAT_WIDTH)[0];
@@ -142,13 +182,13 @@ public class cameraActivity extends AppCompatActivity
             // 라벨링 박스
             Imgproc.rectangle(mRGBA, new Point(left, top), new Point(left + width, top + height), new Scalar(0, 0, 255), 3);
         }
-        if(Math.abs(tempSum-areaSum)>300) {
-            if (tempSum - areaSum > 0 && !stateNow) {
+        if(Math.abs(tempSum-areaSum)>900) {
+            if (tempSum - areaSum > 0 && !stateNow) {  //꺼져있는 상태에서, 빛의 총량(면적이) 늘어난경우
                 stateNow = true;           // 기존보다 밝아진경우(켜진경우)
                 long tempTime=System.currentTimeMillis();
                 updateMorse(tempTime-count, stateNow);
-                count = tempTime;
-            } else if(tempSum - areaSum < 0 && stateNow){
+                count = tempTime ;
+            } else if(tempSum - areaSum < 0 && stateNow){   //켜져있는 상태에서, 빛의 총량(면적이) 줄어든경우
                 stateNow = false;          // 기존보다 어두워진경우(꺼진경우)
                 long tempTime=System.currentTimeMillis();
                 updateMorse(tempTime-count, stateNow);
@@ -156,6 +196,7 @@ public class cameraActivity extends AppCompatActivity
             }
             areaSum = tempSum;
         }
+
         Core.flip(mRGBA, mRGBA, 1);
         grayScaleGaussianBlur.release();
         return mRGBA;

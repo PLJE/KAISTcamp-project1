@@ -6,19 +6,31 @@
     android:layout_height="match_parent">
 
     <org.opencv.android.JavaCameraView
+        android:id="@+id/activity_surface_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activity_surface_view"/>
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-134dp" />
 
     <TextView
         android:id="@+id/txt_morse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="164dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/activity_surface_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_surface_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_morse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -122,7 +122,7 @@ public class free extends Fragment {
             private void flashMessage() {
                 String flashString = "";
                 for(String i : inputString.split("")){
-                    flashString+=morseConverter.get(i.toUpperCase());
+                    flashString+=morseConverter.get(i.toUpperCase())+"2";
                 }
 
                 for(String i : flashString.split("")){
@@ -132,21 +132,31 @@ public class free extends Fragment {
                     else if(i.equals("1")){
                         longFlash();
                     }
+                    else{
+                        littlePause();
+                    }
                 }
+                flashLightOn();
+                sleep(400);
+                flashLightOff();
+            }
+
+            private void littlePause() {
+                sleep(1200);
             }
 
             private void longFlash() {
                 flashLightOn();
-                sleep(700);
+                sleep(1000);
                 flashLightOff();
-                sleep(250);
+                sleep(400);
             }
 
             private void shortFlash() {
                 flashLightOn();
-                sleep(200);
+                sleep(500);
                 flashLightOff();
-                sleep(250);
+                sleep(400);
 
             }
         });

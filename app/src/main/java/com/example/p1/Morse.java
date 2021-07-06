@@ -46,11 +46,58 @@ public class Morse {
         maps.put("9","11110");
         maps.put(".", "010101");
         maps.put(",", "110011");
-        maps.put("?", "0.1100");
+        maps.put("?", "001100");
         maps.put("!", "101011");
         maps.put("-", "100001");
         maps.put("/", "10010");
         maps.put("@", "011010");
+    }
+    public void reverseSetMaps(){
+        maps.put("01", "A");
+        maps.put("1000","B");
+        maps.put("1010","C");
+        maps.put("100","D");
+        maps.put("0","E");
+        maps.put("0010","F");
+        maps.put("110","G");
+        maps.put("0000","H");
+        maps.put("00","I");
+        maps.put("0111","J");
+        maps.put("101","K");
+        maps.put("0100","L");
+        maps.put("11","M");
+        maps.put("10","N");
+        maps.put("111","O");
+        maps.put("0110","P");
+        maps.put("1101","Q");
+        maps.put("010","R");
+        maps.put("000","S");
+        maps.put("1","T");
+        maps.put("001","U");
+        maps.put("0001","V");
+        maps.put("011","W");
+        maps.put("1001","X");
+        maps.put("1011","Y");
+        maps.put("1100","Z");
+        maps.put("11111","0");
+        maps.put("01111","1");
+        maps.put("00111", "2");
+        maps.put("00011", "3");
+        maps.put("00001", "4");
+        maps.put("00000", "5");
+        maps.put("10000", "6");
+        maps.put("11000", "7");
+        maps.put("11100", "8");
+        maps.put("11110", "9");
+        maps.put("010101","." );
+        maps.put("110011","," );
+        maps.put("001100","?" );
+        maps.put("101011","!" );
+        maps.put("100001","-" );
+        maps.put("10010","/" );
+        maps.put("011010","@" );
+
+
     }
     public HashMap<String,String> getMaps(){
         return maps;
