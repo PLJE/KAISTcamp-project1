@@ -14,7 +14,7 @@
 - 가로로 스와이프하면 번호가 화면에서 삭제되고, 휴대폰 주소록 앱에서도 반영되어 번호가 삭제 
 <img src = "https://user-images.githubusercontent.com/77712822/124557405-6d85f400-de74-11eb-83e3-ea6e0f09e405.png" width="30%" height = "30%">   
 
-- Long click & drag 로 아이템의 위치가 변경   
+- Long click & drag 로 아이템의 위 아래 위치 변경 가능    
 - 전화 버튼을 클릭하면 휴대폰 다이얼 화면으로 넘어가 해당 번호를 띄워 전화 걸기 가능   
 <img src = "https://user-images.githubusercontent.com/77712822/124542556-8edbe580-de5e-11eb-9f1c-28c821285e88.jpg" width="30%" height = "30%">  
     
