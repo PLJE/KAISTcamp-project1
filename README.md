@@ -23,7 +23,7 @@ Project1
 ![KakaoTalk_20210706_132131999](https://user-images.githubusercontent.com/77712822/124542052-a070bd80-de5d-11eb-961e-ac890ab981e8.jpg)
 
 ## 주소록 - 전화걸기
-![Uploading KakaoTalk_20210706_132131999_06.jpg…]()
+![KakaoTalk_20210706_132131999_06](https://user-images.githubusercontent.com/77712822/124542556-8edbe580-de5e-11eb-9f1c-28c821285e88.jpg)
 
 ## 탭2 (갤러리)
 ![KakaoTalk_20210706_132131999_01](https://user-images.githubusercontent.com/77712822/124542132-c39b6d00-de5d-11eb-85d1-f36bdc0d5ecf.jpg)
