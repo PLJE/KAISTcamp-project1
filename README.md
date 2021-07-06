@@ -1,5 +1,5 @@
 # KAISTcamp-project1   
-## APK
+## APK 구글 드라이브 링크
 https://drive.google.com/file/d/1u3ICO728WT359Lc7Pm-EyFGLJAuYmz08/view?usp=sharing
 ## Team : 이주은, 양현호   
 ## Project1 - 탭 구조를 이용한 안드로이드 앱    
