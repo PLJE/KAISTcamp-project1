@@ -1,6 +1,8 @@
 # KAISTcamp-project1   
+## APK
+https://drive.google.com/file/d/1u3ICO728WT359Lc7Pm-EyFGLJAuYmz08/view?usp=sharing
 ## Team : 이주은, 양현호   
-## Project1 - 탭 구조를 이용한 안드로이드 앱     
+## Project1 - 탭 구조를 이용한 안드로이드 앱    
 - TabLayout 과 ViewPager2를 이용하여 탭 구조 구현   
    
    
@@ -12,10 +14,10 @@
 <img src = "https://user-images.githubusercontent.com/77712822/124542052-a070bd80-de5d-11eb-961e-ac890ab981e8.jpg" width="30%" height = "30%">    
 
 ### 기능       
-- 가로로 스와이프하면 번호가 화면에서 삭제되고, 휴대폰 주소록 앱에서도 반영되어 번호가 삭제 
+- 가로로 스와이프하면 번호가 리사이클러뷰에서 삭제되고, contentResolver로 연락처 앱에서도 삭제되도록 구현
 <img src = "https://user-images.githubusercontent.com/77712822/124557405-6d85f400-de74-11eb-83e3-ea6e0f09e405.png" width="30%" height = "30%">   
 
-- Long click & drag 로 아이템의 위 아래 위치 변경 가능    
+- ItemTouchHelper를 이용하여 Long click & drag 로 아이템의 위 아래 위치 변경 가능하도록 구현  
 - 전화 버튼을 클릭하면 휴대폰 다이얼 화면으로 넘어가 해당 번호를 띄워 전화 걸기 가능   
 <img src = "https://user-images.githubusercontent.com/77712822/124542556-8edbe580-de5e-11eb-9f1c-28c821285e88.jpg" width="30%" height = "30%">  
     
