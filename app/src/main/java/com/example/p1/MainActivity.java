@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ActionBar;
 import android.content.ContentResolver;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -103,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 line2 = "";
             }
         }
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
     private Bitmap queryContactImage(int imageDataRow){
         Cursor c = getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] {
