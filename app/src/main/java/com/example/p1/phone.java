@@ -1,6 +1,7 @@
 package com.example.p1;
 
 import android.content.ContentResolver;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,14 +25,16 @@ public class phone extends Fragment {
     //private ArrayList<Numbers> userList;
     private RecyclerView recyclerView;
     private ArrayList<String> numbook;
-    private ArrayList<String> namebook; //
+    private ArrayList<String> namebook;
+    private ArrayList<Bitmap> photobook;
 
     public phone(){
 
     }
-    public phone(ArrayList<String> numbook , ArrayList<String> namebook){
-        this.namebook = namebook; //
+    public phone(ArrayList<String> numbook , ArrayList<String> namebook , ArrayList<Bitmap> photobook){
+        this.namebook = namebook;
         this.numbook = numbook;
+        this.photobook = photobook;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class phone extends Fragment {
     }
 
     private void setAdapter() {
-        PhoneAdapter adapter = new PhoneAdapter(numbook , namebook); //
+        PhoneAdapter adapter = new PhoneAdapter(numbook , namebook , photobook);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
