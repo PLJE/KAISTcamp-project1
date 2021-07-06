@@ -20,17 +20,17 @@ Project1
 - OpenCV를 이용해 카메라로 빛을 인식하여 모스 부호를 해독하여 메시지를 띄워준다.   
 
 ## 탭1 (주소록)
-![KakaoTalk_20210706_132131999](https://user-images.githubusercontent.com/77712822/124542052-a070bd80-de5d-11eb-961e-ac890ab981e8.jpg)
+<img src = "https://user-images.githubusercontent.com/77712822/124542052-a070bd80-de5d-11eb-961e-ac890ab981e8.jpg" width="30%" height = "30%">
 
 ## 주소록 - 전화걸기
-![KakaoTalk_20210706_132131999_06](https://user-images.githubusercontent.com/77712822/124542556-8edbe580-de5e-11eb-9f1c-28c821285e88.jpg)
+<img src = "https://user-images.githubusercontent.com/77712822/124542556-8edbe580-de5e-11eb-9f1c-28c821285e88.jpg" width="30%" height = "30%">
 
 ## 탭2 (갤러리)
-![KakaoTalk_20210706_132131999_01](https://user-images.githubusercontent.com/77712822/124542132-c39b6d00-de5d-11eb-85d1-f36bdc0d5ecf.jpg)
-![KakaoTalk_20210706_132131999_05](https://user-images.githubusercontent.com/77712822/124542153-ce560200-de5d-11eb-8d13-2546e44d6214.jpg)
+<img src = "https://user-images.githubusercontent.com/77712822/124542132-c39b6d00-de5d-11eb-85d1-f36bdc0d5ecf.jpg" width="30%" height = "30%">
+<img src = "https://user-images.githubusercontent.com/77712822/124542153-ce560200-de5d-11eb-8d13-2546e44d6214.jpg" width="30%" height = "30%">
 
 ## 탭3 (모스부호 변환기)
-![KakaoTalk_20210706_132131999_04](https://user-images.githubusercontent.com/77712822/124542175-da41c400-de5d-11eb-8d02-9aa23c29d6bf.jpg)
+<img src = "https://user-images.githubusercontent.com/77712822/124542175-da41c400-de5d-11eb-8d02-9aa23c29d6bf.jpg" width="30%" height = "30%">
 
 
 
